@@ -1,5 +1,5 @@
 <?php
-    define('SERVER_NAME', 'localhost');
+    define('SERVER_NAME', '172.24.33.186');
     define('DB_USERNAME', 'admin');
     define('DB_PASSWORD', 'admin');
     define('DB_NAME', 'messManagement');
