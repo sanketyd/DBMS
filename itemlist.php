@@ -9,6 +9,8 @@
              if((string)$rollNo == $_POST['rollNo']){
                  $_SESSION['rollNo'] = $rollNo;
 
+                 $student_exists = TRUE;
+
                  if($stmt = $db_connect->prepare("SELECT name, hallName, roomNo, bill FROM StudentInfo WHERE rollNo = ?")){
                      $stmt->bind_param("i",$rollNo);
                      $stmt->execute();
@@ -19,7 +21,9 @@
                          echo "Hall No.:" . $hallName . "<br />";
                          echo "Room No.:" . $roomNo . "<br />";
                          echo "Current Extra's Bill:" . $bill . "<br />";
+                         echo "";
                      } else {
+                         $student_exists = FALSE;
                          echo "Entry doesn't Exist\n";
                          echo '<form action="./neworedit.php" method="post">
                             Name: <input type="text" name="studentName"/> <br />
@@ -31,7 +35,7 @@
                      $stmt->close();
                  }
 
-                 if($stmt = $db_connect->prepare("SELECT extraItem, price FROM Extras WHERE hallName = ? AND day = ? AND MEAL = ?")){
+                 if(($stmt = $db_connect->prepare("SELECT extraItem, price FROM Extras WHERE hallName = ? AND day = ? AND MEAL = ?")) && $student_exists){
 
                      $today = strtoupper(date("l", time()));
                      $time_now = (int)date("G",time());
@@ -50,7 +54,7 @@
                      echo "<form action='./itembought.php' method='post'>";
 
                      while($stmt->fetch()){
-                         echo "Item Name: " . $extra_item . " Price: " . $item_price . "<input name='" . $extra_item . "' type='text'/><br />";
+                         echo "Item Name: " . $extra_item . " Price: " . $item_price . " Quantity: <input name='" . $extra_item . "' type='text' value=0 /><br />";
                      }
 
                      echo "<input type='submit'/>";
