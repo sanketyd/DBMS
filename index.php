@@ -7,6 +7,15 @@
     </head>
     <body>
         <div class="container">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <h2>Mess Management IITK</h2>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
             <form action="./logincheck.php" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-md-2" for="username">Hall Name/No.</label>
@@ -21,7 +30,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <label class="control-label col-md-2"><span class="glyphicon glyphicon-log-in"></span></label>
+                    <div class="col-md-10">
                         <input class="btn btn-success" type="submit" value="Login" />
                     </div>
                 </div>
