@@ -11,7 +11,7 @@
                 $stmt->bind_param("isssi", $_SESSION['rollNo'], $student_name, $_SESSION['hallName'], $room_no, $ZERO);
                 if($stmt->execute()){
                     echo "Insertion Succesful";
-                    sleep(4);
+                    sleep(1);
                     header("Location: ./buyextra.php");
                 } else {
                     echo "Insertion Failed";

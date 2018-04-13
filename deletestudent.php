@@ -5,7 +5,7 @@
 
     if(isset($_SESSION['hallName'])){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-          	$is_dues = TRUE; 
+          	$is_dues = TRUE;
             if($stmt = $db_connect->prepare("SELECT bill FROM StudentInfo WHERE rollNo = ?") && $_POST['day'] == "YES" ){
             	$stmt->bind_param("i",$_SESSION['rollNo']);
             	$stmt->execute();
@@ -14,6 +14,7 @@
             	if($bill == 0){
             		$is_dues= FALSE;
             	}
+				$stmt->close();
             }
 
 
@@ -21,7 +22,7 @@
         		$stmt->bind_param("i",$_SESSION['rollNo']);
         		$stmt->execute();
         		$stmt->close();
-	     	    echo  "<a href="./buyextra.php">Home</a>";
+	     	    echo  "<a href='./buyextra.php'>Home</a>";
 			}
 			else if($is_dues){
 				echo "Clear the dues first please";
@@ -30,10 +31,9 @@
 	else{
         header("Location: ./index.php");
 	}
-
+}
 ?>
 
-<!DOCTYPE html>
 <html>
 <head>
 	<title>Are you sure you want to delete your name from hall </title>
