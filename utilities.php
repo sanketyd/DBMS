@@ -51,6 +51,7 @@
         onDate DATE NOT NULL,
         atTime TIME NOT NULL,
         item CHAR(50) NOT NULL,
+        quantity INTEGER NOT NULL,
         price INTEGER NOT NULL,
         FOREIGN KEY (rollNo) REFERENCES StudentInfo(rollNo) ON DELETE NO ACTION
     )";

@@ -5,7 +5,7 @@
     if(isset($_SESSION['hallName'])){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-             $rollNo = (int)$_POST['rollNo'];
+             $rollNo = (int)check_input($_POST['rollNo']);
              if((string)$rollNo == $_POST['rollNo']){
                  $_SESSION['rollNo'] = $rollNo;
 
@@ -16,16 +16,19 @@
                      $stmt->execute();
                      $stmt->bind_result($name, $hallName, $roomNo, $bill);
                      if($stmt->fetch()){
+                         if($_SESSION['hallName'] != $hallName){
+                             echo "<span style='color:red'>Warning: Student doesn't belong to Hall" . $_SESSION['hallName'] . "</span><br />";
+                         }
+                         $_SESSION['currentBill'] = $bill;
                          echo "<img src='https://oa.cc.iitk.ac.in/Oa/Jsp/Photo/" . $rollNo . "_0.jpg' /> <br />";
                          echo "Name:" . $name . "<br />";
                          echo "Hall No.:" . $hallName . "<br />";
                          echo "Room No.:" . $roomNo . "<br />";
                          echo "Current Extra's Bill:" . $bill . "<br />";
-                         echo "";
                      } else {
                          $student_exists = FALSE;
                          echo "Entry doesn't Exist\n";
-                         echo '<form action="./neworedit.php" method="post">
+                         echo '<form action="./newuser.php" method="post">
                             Name: <input type="text" name="studentName"/> <br />
                             Room No.: <input type="text" name="roomNo"/> <br />
                             <input type="submit"/>
@@ -53,16 +56,24 @@
 
                      echo "<form action='./itembought.php' method='post'>";
 
+                     $_SESSION['itemsAndPrices'] = array();
+
+                     $is_list_empty = TRUE;
+
                      while($stmt->fetch()){
+                         $is_list_empty = FALSE;
+                         array_push($_SESSION['itemsAndPrices'], array($extra_item, $item_price));
                          echo "Item Name: " . $extra_item . " Price: " . $item_price . " Quantity: <input name='" . $extra_item . "' type='text' value=0 /><br />";
                      }
 
-                     echo "<input type='submit'/>";
+                     if(!$is_list_empty){
+                         echo "<input type='submit'/>";
+                     }
                      echo "</form>";
                      $stmt->close();
                  }
              } else {
-                 echo "Check enetered Roll No.";
+                 echo "Check entered Roll No.";
              }
 
         } else {
@@ -71,8 +82,6 @@
             header("Location: ./buyextra.php");
         }
     } else {
-        echo "Please Login First.\n";
-        sleep(4);
         header("Location: ./index.php");
     }
 ?>

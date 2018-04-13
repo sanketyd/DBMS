@@ -27,5 +27,7 @@
 
             $stmt->close();
         }
+    } else {
+        header("Location: ./index.php");
     }
 ?>
