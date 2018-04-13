@@ -18,6 +18,8 @@
                      if($stmt->fetch()){
                          if($_SESSION['hallName'] != $hallName){
                              echo "<span style='color:red'>Warning: Student doesn't belong to Hall" . $_SESSION['hallName'] . "</span><br />";
+
+
                          }
                          $_SESSION['currentBill'] = $bill;
                          echo "<img src='https://oa.cc.iitk.ac.in/Oa/Jsp/Photo/" . $rollNo . "_0.jpg' /> <br />";
@@ -71,6 +73,12 @@
                      }
                      echo "</form>";
                      $stmt->close();
+
+                     echo "If you are leaving Hall press the ..... <br>";
+                     echo "<form action = './deletestudent.php' method='post'>";
+                     echo "<input type='submit'/> ";
+                     echo "</form>" ;
+
                  }
              } else {
                  echo "Check entered Roll No.";
