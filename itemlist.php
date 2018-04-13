@@ -74,10 +74,8 @@
                      echo "</form>";
                      $stmt->close();
 
-                     echo "If you are leaving Hall press the ..... <br>";
-                     echo "<form action = './deletestudent.php' method='post'>";
-                     echo "<input type='submit'/> ";
-                     echo "</form>" ;
+                     echo "If you are leaving Hall go to the bottom link<br>";
+                     echo  "<a href="./buyextra.php">Home</a>";
 
                  }
              } else {

@@ -29,7 +29,7 @@
         <title>Add Item</title>
     </head>
     <body>
-        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
+        <form action=<? php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
             Extra Item: <input name="itemNew" type="text"/>
             <br />
             Price: <input name="itemPrice" type="text"/>
