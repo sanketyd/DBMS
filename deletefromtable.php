@@ -9,7 +9,7 @@
                 if(!isset($_GET['toDeleteItem'])){
                     header("Location: ./deleteitem.php");
                 }
-                foreach (check_input($_GET['toDeleteItem']) as $to_delete_item) {
+                foreach ($_GET['toDeleteItem'] as $to_delete_item) {
                     $to_delete_item = check_input($to_delete_item);
                     $stmt->bind_param("ssss", $_SESSION['hallName'], $_SESSION['day'], $_SESSION['meal'], $to_delete_item);
                     $stmt->execute();

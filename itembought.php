@@ -7,8 +7,8 @@
             $total_price = $_SESSION['currentBill'];
 
             foreach($_SESSION['itemsAndPrices'] as $item_and_price){
-                if(isset($_POST[$item_and_price[0]])){
-                    $current_item_quantity = check_input($_POST[$item_and_price[0]]);
+                if(isset($_POST[str_replace(' ','_',$item_and_price[0])])){
+                    $current_item_quantity = check_input($_POST[str_replace(' ','_',$item_and_price[0])]);
                     $total_price = $total_price + $current_item_quantity*$item_and_price[1];
 
                     if ($current_item_quantity > 0) {

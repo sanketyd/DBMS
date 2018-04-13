@@ -43,7 +43,7 @@
                     $_SESSION['day'] = $day;
                     $_SESSION['meal'] = $meal;
 
-                    echo "<form action='deletefromtable.php' method='get' class='form-horizontal'>";
+                    echo "<form action='./deletefromtable.php' method='get' class='form-horizontal'>";
                     echo "<div class='row'>";
                     echo '
                     <div class="col-md-2" style="text-align:right">

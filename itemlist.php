@@ -111,24 +111,20 @@
 
                             $is_list_empty = TRUE;
 
-                            echo "<table class='table table-bordered'\n";
+                            echo "<table class='table table-bordered'>\n";
                             echo "<tr><th>Item Name</th><th>Item Price</th><th>Quantity</th></tr>";
                             while($stmt->fetch()){
                                 $is_list_empty = FALSE;
                                 array_push($_SESSION['itemsAndPrices'], array($extra_item, $item_price));
                                 echo "<tr><td> " . $extra_item . "</td> <td>" . $item_price . "</td> <td class='form-group'> <input name='" . $extra_item . "' type='text' value=0 class='form-control'/></td></tr>";
                             }
-                            echo "<table>\n";
+                            echo "</table>\n";
 
                             if(!$is_list_empty){
                                 echo "<input type='submit' class='btn btn-info col-md-12'/>";
                             }
                             echo "</form>";
                             $stmt->close();
-
-                            echo "If you are leaving Hall go to the bottom link<br>";
-                            echo  "<a href='./deletestudent.php'>Home</a>";
-
                         }
                     } else {
                         echo "Check entered Roll No.";

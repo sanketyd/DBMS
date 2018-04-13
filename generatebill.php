@@ -27,6 +27,13 @@
             $stmt->close();
         }
 
+        if($stmt = $db_connect->prepare("DELETE FROM History WHERE onDate < ? AND rollNo IN (SELECT rollNo FROM StudentInfo WHERE hallName = ?)")){
+            $date_two_month_before = date("Y:m:d",time()-5184000);
+            $stmt->bind_param("ss",$date_two_month_before,$_SESSION['hallName']);
+            $stmt->execute();
+            $stmt->close();
+        }
+
         header("Location: ./data/" . $_SESSION['hallName'] . ".csv");
     } else {
         header("Location: ./index.php");

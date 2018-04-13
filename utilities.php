@@ -30,8 +30,6 @@
         hallName CHAR(10) NOT NULL,
         roomNo CHAR(10) NOT NULL,
         bill INTEGER NOT NULL,
-        rebateFrom DATE,
-        rebateTo DATE,
         PRIMARY KEY (rollNo),
         FOREIGN KEY (hallName) REFERENCES HallLogin(hallName) ON DELETE CASCADE
     )";
@@ -52,8 +50,7 @@
         atTime TIME NOT NULL,
         item CHAR(50) NOT NULL,
         quantity INTEGER NOT NULL,
-        price INTEGER NOT NULL,
-        FOREIGN KEY (rollNo) REFERENCES StudentInfo(rollNo) ON DELETE NO ACTION
+        price INTEGER NOT NULL
     )";
 
     try {
