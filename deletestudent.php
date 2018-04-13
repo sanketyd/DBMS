@@ -23,6 +23,9 @@
         		$stmt->close();
 	     	    echo  "<a href="./buyextra.php">Home</a>";
 			}
+			else if($is_dues){
+				echo "Clear the dues first please";
+			}
 	}
 	else{
         header("Location: ./index.php");
