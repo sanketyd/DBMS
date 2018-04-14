@@ -25,7 +25,7 @@
                 </ul>
                 <a href="./additem.php" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-plus"></span>Add an Item</a>
                 <a href="./deleteitem.php" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-minus"></span>Delete an Item</a>
-                <a href=<?php echo "./data/" . $_SESSION['hallName'] . ".csv"; ?> class="btn btn-info navbar-btn"><span class="glyphicon glyphicon-file"></span>Prevoius Bill</a>
+                <a href='<?php echo "./data/" . $_SESSION['hallName'] . ".csv"; ?>' class="btn btn-info navbar-btn"><span class="glyphicon glyphicon-file"></span>Prevoius Bill</a>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="./generatebill.php"><span class="glyphicon glyphicon-pencil"></span>Generate Bill</a></li>
                     <li><a href="./logout.php"><span class="glyphicon glyphicon-log-out"></span>LogOut</a></li>
